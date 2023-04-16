@@ -89,7 +89,7 @@ class SnsLoginButton : UIButton {
         self.backgroundColor = loginType.setBackgrondColor()
         self.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         self.addTarget(self, action: #selector(btnClicked(_:)), for: .touchUpInside)
-        self.layer.cornerRadius = 8
+//        self.layer.cornerRadius = 8
         
     }
     

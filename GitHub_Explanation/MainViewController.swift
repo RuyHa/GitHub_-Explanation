@@ -10,9 +10,11 @@ import UIKit
 class MainViewController: UIViewController {
     
     
+    let userDevice = UIDevice.current.userInterfaceIdiom
+
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "appleBackground")
+        imageView.image = UIImage(named: "appleBackground2")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -20,7 +22,7 @@ class MainViewController: UIViewController {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Clue_Sample_APP"
-        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: userDevice == .phone ? 28 : 48, weight: .bold)
         label.textColor = .white
         label.textAlignment = .center
         return label
@@ -75,12 +77,12 @@ extension MainViewController {
         titleLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            $0.top.equalToSuperview().offset(UIScreen.main.bounds.height/8)
         }
         
         appleButton.snp.makeConstraints{
-            $0.leading.equalToSuperview().offset(30)
-            $0.trailing.equalToSuperview().offset(-30)
+            $0.leading.equalToSuperview().offset(userDevice == .phone ? 30 : 60)
+            $0.trailing.equalToSuperview().offset(userDevice == .phone ? -30 : -60)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
